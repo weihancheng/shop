@@ -18,7 +18,7 @@ class EnterController extends Controller
 	public function login(EnterRequest $request)
 	{
 		if (!Auth::guard('admin')->attempt(['name' => $request->name, 'password' => $request->password])) {
-			session()->flash('error', '用户名或密码不正确');
+			session()->flash('danger', '用户名或密码不正确');
 			return back();
 		}
 		return redirect()->route('admin.index.index');

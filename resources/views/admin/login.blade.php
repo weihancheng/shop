@@ -32,24 +32,12 @@
 <div class="login-container animated fadeInDown">
     <div class="loginbox bg-white">
         <div class="loginbox-title">登录</div>
-        <div class="loginbox-social">
-            <div class="social-title ">Connect with Your Social Accounts</div>
-            <div class="social-buttons">
-                <a href="default.htm" class="button-facebook">
-                    <i class="social-icon fa fa-facebook"></i>
-                </a>
-                <a href="default.htm" class="button-twitter">
-                    <i class="social-icon fa fa-twitter"></i>
-                </a>
-                <a href="default.htm" class="button-google">
-                    <i class="social-icon fa fa-google-plus"></i>
-                </a>
-            </div>
-        </div>
         <div class="loginbox-or">
             <div class="or-line"></div>
             <div class="or">后台</div>
         </div>
+        @include('layouts._validate')
+        @include('layouts._message')
         <form action="/admin/login" method="post">
             @csrf
             <div class="loginbox-textbox">
@@ -62,20 +50,6 @@
                 <input type="submit" class="btn btn-primary btn-block" value="登录">
             </div>
         </form>
-        @if (count($errors) > 0)
-        <!-- Form Error List -->
-            <div class="alert alert-danger">
-                <strong>Whoops! Something went wrong!</strong>
-
-                <br><br>
-
-                <ul>
-                    @foreach ($errors->all() as $k => $error)
-                        <li>{{ $k }} => {{ $error }}</li>
-                    @endforeach
-                </ul>
-            </div>
-        @endif
     </div>
 </div>
 

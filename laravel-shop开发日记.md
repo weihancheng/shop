@@ -101,5 +101,4 @@
 
     step 3:
     php artisan migrate
-
 ```

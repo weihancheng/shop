@@ -107,8 +107,8 @@
             </a>
             <ul class="submenu">
                 <li>
-                    <a href="tables-simple.html">
-                        <span class="menu-text">角色管理</span>
+                    <a href="/admin/role">
+                        <span class="menu-text">角色列表</span>
                     </a>
                 </li>
                 <li>

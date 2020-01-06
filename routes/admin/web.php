@@ -11,5 +11,8 @@ Route::group(['prefix' => 'admin', 'namespace' => 'Admin'], function() {
 });
 
 Route::group(['middleware' => ['web', 'auth:admin'], 'prefix' => 'admin', 'namespace' => 'Admin'], function() {
+    // 后台首页
 	Route::get('/index/index', 'IndexController@index')->name('admin.index.index');
+
+	Route::name('admin')->resource('role','RoleController');
 });

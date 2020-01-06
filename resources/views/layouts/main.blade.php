@@ -43,6 +43,9 @@
 <!-- 页面头end -->
 
 <div class="main-container container-fluid">
+    <!-- Chat Bar -->
+    @include('layouts.chat')
+    <!-- /Chat Bar -->
     <!-- 内容结束 -->
     <div class="page-container">
         @include('layouts.menu')

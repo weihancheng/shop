@@ -37,4 +37,17 @@ class EnterRequest extends FormRequest
 				}
 		}
     }
+
+    public function messages() {
+        return [
+            'name.required' => '用户名不能为空',
+            'name.min' => '姓名至少2个字符',
+            'name.max' => '姓名至多12个字符',
+            'password.required' => '密码不能为空',
+            'password.min' => '密码至少5位',
+            'password.max' => '密码至多60位',
+        ];
+    }
+
+
 }
