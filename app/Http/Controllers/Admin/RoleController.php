@@ -4,7 +4,6 @@ namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
 use App\Http\Requests\RoleRequest;
-use Illuminate\Http\Request;
 use Spatie\Permission\Models\Role;
 
 class RoleController extends Controller
@@ -18,16 +17,6 @@ class RoleController extends Controller
     {
         $roles = Role::get();
         return view('admin.role.index', compact('roles'));
-    }
-
-    /**
-     * Show the form for creating a new resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
-    public function create()
-    {
-        //
     }
 
     /**
@@ -55,26 +44,19 @@ class RoleController extends Controller
     }
 
     /**
-     * Show the form for editing the specified resource.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function edit($id)
-    {
-        //
-    }
-
-    /**
      * Update the specified resource in storage.
      *
      * @param  \Illuminate\Http\Request  $request
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(RoleRequest $request, Role $role)
     {
-        //
+        $role->name = $request->name;
+        $role->title = $request->title;
+        $role->save();
+        session()->flash('success', 'ID为'. $role->id . '的字段修改成功');
+        return back();
     }
 
     /**

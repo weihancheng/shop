@@ -33,9 +33,12 @@ class RoleRequest extends FormRequest
                 }
             case 'PUT' :
                 {
+                    $role = $this->route('role');
+                    $id = $role ? $role->id : null;
+                    // 排除当前字段
                     return [
-                        'title' => 'required|unique:roles',
-                        'name' => 'required|unique:roles'
+                        'title' => "required|unique:roles,title,{$id}",
+                        'name' => "required|unique:roles,title,{$id}"
                     ];
                 }
             default:

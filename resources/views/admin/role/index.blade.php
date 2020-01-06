@@ -73,9 +73,23 @@
                                     {{$role->name}}
                                 </td>
                                 <td class="text-align-center">
-                                    <a href="javascript:void(0);" class="btn btn-blue btn-sm">权限</a>
+                                    <a href="javascript:void(0);" class="btn btn-sm">权限</a>
+                                    <a href="javascript:void(0);" class="btn btn-blue btn-sm" data-toggle="modal" data-target=".editRole{{$role->id}}">编辑</a>
                                     <a href="javascript:void(0);" class="btn btn-danger btn-sm">删除</a>
                                 </td>
+                                {{-- 编辑模态框start --}}
+                                @component('components.modal', ['id' => "editRole".$role->id, 'url' => "/admin/role/".$role->id, 'title' => "编辑：".$role->title, 'method' => "PUT"])
+                                    @csrf
+                                    <div class="form-group">
+                                        <label for="title">角色名称</label>
+                                        <input type="text" name="title" class="form-control" id="title" placeholder="请输入角色名称" value="{{$role->title}}">
+                                    </div>
+                                    <div class="form-group">
+                                        <label for="name">角色标识</label>
+                                        <input type="text" name="name" class="form-control" id="name" placeholder="请输入角色标识" value="{{$role->name}}">
+                                    </div>
+                                @endcomponent
+                                {{-- 编辑模态框end --}}
                             </tr>
                             @endforeach
                             </tbody>
