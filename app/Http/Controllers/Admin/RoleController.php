@@ -16,7 +16,7 @@ class RoleController extends Controller
      */
     public function index()
     {
-        $roles = Role::get();
+        $roles = Role::where('name', '<>', 'webmaster')->get();
         return view('admin.role.index', compact('roles'));
     }
 
@@ -31,17 +31,6 @@ class RoleController extends Controller
         Role::create(['name' => $request->name, 'title' => $request->title]);
         session()->flash('success', '添加' . $request->title . '成功');
         return back();
-    }
-
-    /**
-     * Display the specified resource.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function show($id)
-    {
-        //
     }
 
     /**
@@ -66,9 +55,10 @@ class RoleController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy($id)
+    public function destroy(Role $role)
     {
-        //
+        $role->delete();
+        return redirect('/admin/role')->with('success', '删除成功');
     }
 
 	public function permission(Role $role)

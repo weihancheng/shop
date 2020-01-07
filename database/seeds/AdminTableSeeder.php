@@ -12,16 +12,25 @@ class AdminTableSeeder extends Seeder
     public function run()
     {
         $admins = factory(App\Model\Admin::class, 5)->create();
-        $admins = $admins[0];
-        $admins->name = "admin";
-        $admins->nickname = "weiy";
-        $admins->save();
+        $admin = $admins[0];
+        $admin->name = "weiy";
+        $admin->nickname = "weiy";
+        $admin->save();
+
+
         // 权限添加
 		Spatie\Permission\Models\Role::create([
-			'title' => '管理员',
-			'name' => 'admin',
+			'title' => '站长',
+			'name' => 'webmaster',
 			'guard_name' => 'admin'
 		]);
-		$admins->assignRole('admin');
+		$admin->assignRole('webmaster');
+
+
+        $admin2 = $admins[1];
+        $admin2->name = "admin";
+        $admin2->nickname = "admin";
+        $admin2->save();
+        $admin2->assignRole('superadmin');
     }
 }

@@ -41,7 +41,7 @@
         <form action="/admin/login" method="post">
             @csrf
             <div class="loginbox-textbox">
-                <input type="text" name="name" class="form-control" placeholder="账号" value="admin"/>
+                <input type="text" name="name" class="form-control" placeholder="账号" value="weiy"/>
             </div>
             <div class="loginbox-textbox">
                 <input type="password" name="password" class="form-control" placeholder="密码" value="123456"/>

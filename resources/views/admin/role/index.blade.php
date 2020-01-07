@@ -51,7 +51,10 @@
                         <td class="text-align-center">
                             <a href="/admin/role/permission/{{$role->id}}" class="btn btn-sm">权限</a>
                             <a href="javascript:void(0);" class="btn btn-blue btn-sm" data-toggle="modal" data-target=".editRole{{$role->id}}">编辑</a>
-                            <a href="javascript:void(0);" class="btn btn-danger btn-sm">删除</a>
+                            <a href="javascript:void(0);" class="btn btn-danger btn-sm" onclick="delRole('{{$role['id']}}', this)">删除</a>
+                            <form action="/admin/role/{{$role['id']}}" method="post" hidden>
+                                @csrf @method('DELETE')
+                            </form>
                         </td>
                         {{-- 编辑模态框start --}}
                         @component('components.modal', ['id' => "editRole".$role->id, 'url' => "/admin/role/".$role->id, 'title' => "编辑：".$role->title, 'method' => "PUT"])
@@ -76,4 +79,14 @@
         @endslot
         {{--主要内容 end--}}
     @endcomponent
+@endsection
+
+@section('script')
+<script>
+    function delRole(id, bt) {
+        if (confirm('确定要删除角色吗？')) {
+            $(bt).next('form').trigger('submit');
+        }
+    }
+</script>
 @endsection

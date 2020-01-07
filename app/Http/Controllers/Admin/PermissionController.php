@@ -15,7 +15,6 @@ class PermissionController extends Controller
      */
     public function index()
     {
-//    	$this->rules();
         $permissions = Permission::get();
         return view('admin.permission.index', compact('permissions'));
     }
@@ -86,16 +85,4 @@ class PermissionController extends Controller
         //
     }
 
-    // 同步代码
-    private function rules() {
-		// 同步代码
-		$rules = config('rule');
-		foreach($rules as $rule) {
-			foreach ($rule['permissions'] as $permission) {
-				unset($permission['title']);
-				unset($permission['guard']);
-				Permission::create($permission);
-			}
-		}
-	}
 }

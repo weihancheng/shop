@@ -78,6 +78,7 @@
 <script src="{{asset('plugin/pjax/pjax.js')}}"></script>
 <link rel="stylesheet" href="{{asset('plugin/pjax/pjax.css')}}">
 {{--pjax end--}}
+@yield('script')
 </body>
 <!--  /Body -->
 </html>
