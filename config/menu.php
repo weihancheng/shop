@@ -25,19 +25,19 @@ return [
         ]
     ],
     [
-        'title' => '权限管理',
-        'icon' => 'menu-icon fa fa-table',
+        'title' => '文章管理',
+        'icon' => 'menu-icon fa fa-book',
         'permisssion' => '',
         'menus' => [
             [
-                'title' => '角色列表',
-                'permisssion' => 'App\Http\Controllers\Admin\RoleController@index',
-                'url' => '/admin/role'
+                'title' => '栏目列表',
+                'permisssion' => 'App\Http\Controllers\Admin\CategoryController@index',
+                'url' => '/admin/category'
             ],
             [
-                'title' => '权限列表',
-                'permisssion' => 'App\Http\Controllers\Admin\PermissionController@index',
-                'url' => '/admin/permission'
+                'title' => '文章列表',
+                'permisssion' => 'App\Http\Controllers\Admin\ArticleController@index',
+                'url' => '/admin/article'
             ],
         ]
     ]
