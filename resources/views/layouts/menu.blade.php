@@ -112,8 +112,8 @@
                     </a>
                 </li>
                 <li>
-                    <a href="tables-data.html">
-                        <span class="menu-text">Data Tables</span>
+                    <a href="/admin/permission">
+                        <span class="menu-text">权限列表</span>
                     </a>
                 </li>
             </ul>

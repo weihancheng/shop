@@ -13,6 +13,12 @@ Route::group(['prefix' => 'admin', 'namespace' => 'Admin'], function() {
 Route::group(['middleware' => ['web', 'auth:admin'], 'prefix' => 'admin', 'namespace' => 'Admin'], function() {
     // 后台首页
 	Route::get('/index/index', 'IndexController@index')->name('admin.index.index');
-
+	// 角色资源路由
 	Route::name('admin')->resource('role','RoleController');
+	//  角色的权限
+	Route::get('/role/permission/{role}', 'RoleController@permission')->name('admin.role.permission.index');
+	//  添加角色的权限
+	Route::post('/role/permission/{role}', 'RoleController@permissionStore')->name('admin.role.permission.store');
+	// 权限资源路由
+	Route::name('admin')->resource('permission','PermissionController');
 });

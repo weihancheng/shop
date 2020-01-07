@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
 use App\Http\Requests\RoleRequest;
+use Illuminate\Http\Request;
 use Spatie\Permission\Models\Role;
 
 class RoleController extends Controller
@@ -68,5 +69,20 @@ class RoleController extends Controller
     public function destroy($id)
     {
         //
+    }
+
+	public function permission(Role $role)
+	{
+		$rules = config('rule');
+		// 获取当前角色的权限
+		return view('admin.role.permission', compact('role', 'rules'));
+    }
+
+	public function permissionStore(Role $role, Request $request)
+	{
+		// 同步角色的权限
+		$role->syncPermissions($request->name);
+		session()->flash('success', '权限设置成功');
+		return back();
     }
 }

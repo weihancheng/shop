@@ -16,5 +16,12 @@ class AdminTableSeeder extends Seeder
         $admins->name = "admin";
         $admins->nickname = "weiy";
         $admins->save();
+        // 权限添加
+		Spatie\Permission\Models\Role::create([
+			'title' => '管理员',
+			'name' => 'admin',
+			'guard_name' => 'admin'
+		]);
+		$admins->assignRole('admin');
     }
 }

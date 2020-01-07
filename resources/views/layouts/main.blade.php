@@ -46,12 +46,24 @@
     <!-- Chat Bar -->
     @include('layouts.chat')
     <!-- /Chat Bar -->
-    <!-- 内容结束 -->
     <div class="page-container">
         @include('layouts.menu')
-        @yield('content')
+        <!--pjax加载动画-->
+        <div id="loading">
+            <div class="spinner">
+                <div class="rect1"></div>
+                <div class="rect2"></div>
+                <div class="rect3"></div>
+                <div class="rect4"></div>
+                <div class="rect5"></div>
+            </div>
+        </div>
+        <!-- 内容 pjax加载动画 结束-->
+        <div id="pjax-container">
+            @yield('content')
+        </div>
     </div>
-    <!-- 内容开始 -->
+    <!-- 内容结束 -->
 </div>
 
 <!--Basic Scripts-->
@@ -61,6 +73,11 @@
 <!--Beyond Scripts-->
 <script src="{{asset('assets/js/beyond.min.js')}}"></script>
 <!--Page Related Scripts-->
+{{--pjax start--}}
+<script src="https://cdn.bootcss.com/jquery.pjax/2.0.1/jquery.pjax.min.js"></script>
+<script src="{{asset('plugin/pjax/pjax.js')}}"></script>
+<link rel="stylesheet" href="{{asset('plugin/pjax/pjax.css')}}">
+{{--pjax end--}}
 </body>
 <!--  /Body -->
 </html>
